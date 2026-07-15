@@ -9,6 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="logo">CyberAware</div>
+        <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
         <ul class="nav-links">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>

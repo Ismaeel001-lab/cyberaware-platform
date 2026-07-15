@@ -691,3 +691,165 @@ footer {
 .reset-btn:hover {
     background: rgba(0, 240, 255, 0.2);
 }
+/* MOBILE NAV TOGGLE (hidden by default on desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    color: #00f0ff;
+    font-size: 1.4rem;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===== RESPONSIVE BREAKPOINT ===== */
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        margin-top: 16px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-top: 1px solid rgba(0, 240, 255, 0.1);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 14px 4px;
+    }
+
+    /* HERO */
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .hero .subtext {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+
+    .cta-btn {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+
+    /* FORMS */
+    .cyber-form {
+        max-width: 100%;
+        padding: 25px;
+    }
+
+    .form-section h2 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    /* DASHBOARD */
+    .dashboard-section, .admin-section, .learn-section, .quiz-section, .lesson-section {
+        padding: 30px 16px;
+    }
+
+    .dashboard-section h2, .admin-section h2, .learn-section h2, .quiz-section h2 {
+        font-size: 1.7rem;
+    }
+
+    .dashboard-actions, .learn-grid, .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* QUIZ */
+    .quiz-card {
+        padding: 18px;
+    }
+
+    .quiz-question {
+        font-size: 0.95rem;
+    }
+
+    .quiz-options label {
+        padding: 10px 12px;
+        font-size: 0.88rem;
+    }
+
+    /* TABLES - make scrollable instead of squished */
+    .history-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .history-table th, .history-table td {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+    }
+
+    /* LESSON */
+    .lesson-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .lesson-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .lesson-content {
+        padding: 20px;
+    }
+
+    /* RESULT CARD */
+    .result-card {
+        padding: 35px 20px;
+    }
+
+    .result-percentage {
+        font-size: 3rem;
+    }
+
+    /* BADGES */
+    .badges-grid {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 20px 15px;
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
