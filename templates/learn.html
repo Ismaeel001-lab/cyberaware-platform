@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Learn — CyberAware{% endblock %}
+
+{% block content %}
+<section class="learn-section">
+    <h2>Learn</h2>
+    <p class="learn-subtext">Explore each threat category to build your cybersecurity awareness.</p>
+
+    <div class="learn-grid">
+        {% for lesson in lessons %}
+        <a href="{{ url_for('lesson_detail', category=lesson.category) }}" class="learn-card">
+            <div class="learn-icon">{{ lesson.icon }}</div>
+            <h3>{{ lesson.title }}</h3>
+            <p>{{ lesson.summary }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

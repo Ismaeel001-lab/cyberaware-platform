@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — CyberAware{% endblock %}
+
+{% block content %}
+<section class="dashboard-section">
+    <h2>Welcome, {{ current_user.full_name }}</h2>
+    <p class="dashboard-sub">{{ current_user.department }} — {{ current_user.level }} Level</p>
+
+    <div class="dashboard-actions">
+        {% if not pre_result %}
+            <div class="dash-card">
+                <h3>Pre-Test</h3>
+                <p>You haven't taken the pre-test yet. Take it to establish your baseline knowledge.</p>
+                <a href="{{ url_for('quiz', test_type='pre') }}" class="cta-btn">Take Pre-Test</a>
+            </div>
+        {% else %}
+            <div class="dash-card">
+                <h3>Pre-Test Completed</h3>
+                <p>Score: {{ pre_result.score }} points ({{ pre_result.date_taken.strftime('%d %b %Y') }})</p>
+            </div>
+
+            {% if not post_result %}
+            <div class="dash-card">
+                <h3>Post-Test</h3>
+                <p>Ready to see how much you've improved? Take the post-test.</p>
+                <a href="{{ url_for('quiz', test_type='post') }}" class="cta-btn">Take Post-Test</a>
+            </div>
+            {% else %}
+            <div class="dash-card">
+                <h3>Post-Test Completed</h3>
+                <p>Score: {{ post_result.score }} points ({{ post_result.date_taken.strftime('%d %b %Y') }})</p>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="badges-section">
+        <h3>Your Points & Badges</h3>
+        <p class="points-display">{{ total_points }} <span>points earned</span></p>
+        {% if badges %}
+        <div class="badges-grid">
+            {% for badge in badges %}
+            <div class="badge-item">
+                <span class="badge-icon">{{ badge.icon }}</span>
+                <span class="badge-name">{{ badge.name }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="no-badges">Score 80%+ in a category quiz to earn your first badge!</p>
+        {% endif %}
+    </div>
+
+    {% if all_results %}
+    <div class="history-section">
+        <h3>Your Quiz History</h3>
+        <table class="history-table">
+            <thead>
+                <tr><th>Test Type</th><th>Score</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+                {% for r in all_results %}
+                <tr>
+                    <td>{{ r.test_type|capitalize }}-Test</td>
+                    <td>{{ r.score }} pts</td>
+                    <td>{{ r.date_taken.strftime('%d %b %Y, %I:%M %p') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

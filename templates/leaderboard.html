@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Leaderboard — CyberAware{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+    <h2>Leaderboard</h2>
+    <p class="learn-subtext">Top performers, ranked by total points earned across all quizzes.</p>
+
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Student</th>
+                <th>Points</th>
+                <th>Badges</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in board %}
+            <tr {% if entry.is_you %}style="background: rgba(0,240,255,0.08);"{% endif %}>
+                <td>#{{ entry.rank }}</td>
+                <td>{{ entry.display_name }}</td>
+                <td>{{ entry.total_points }} pts</td>
+                <td>{{ entry.badge_count }} 🏅</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

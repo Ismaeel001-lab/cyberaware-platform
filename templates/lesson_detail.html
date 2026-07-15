@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lesson.title }} — CyberAware{% endblock %}
+
+{% block content %}
+<section class="lesson-section">
+    <a href="{{ url_for('learn') }}" class="back-link">← Back to Learn</a>
+    <div class="lesson-header">
+        <span class="lesson-icon-big">{{ lesson.icon }}</span>
+        <h2>{{ lesson.title }}</h2>
+    </div>
+    <div class="lesson-content">
+        <pre>{{ lesson.content }}</pre>
+    </div>
+    <a href="{{ url_for('dashboard') }}" class="cta-btn">Back to Dashboard</a>
+</section>
+{% endblock %}

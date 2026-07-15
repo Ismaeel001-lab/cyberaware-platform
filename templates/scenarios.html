@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Scenarios — CyberAware{% endblock %}
+
+{% block content %}
+<section class="learn-section">
+    <h2>Real-Life Scenarios</h2>
+    <p class="learn-subtext">Step into realistic situations and test how you'd respond to real threats.</p>
+
+    <div class="learn-grid">
+        {% for s in scenarios %}
+        <a href="{{ url_for('scenario_play', scenario_id=s.id) }}" class="learn-card">
+            <div class="learn-icon">{{ s.icon }}</div>
+            <h3>{{ s.title }}</h3>
+            <p>{{ s.category }}</p>
+            {% if s.id in completed_ids %}
+            <p style="color:#4ade80; margin-top:10px; font-size:0.85rem;">✓ Completed</p>
+            {% endif %}
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

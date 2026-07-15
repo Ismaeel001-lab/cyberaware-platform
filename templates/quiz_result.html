@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Your Results — CyberAware{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <h2>{{ test_type|capitalize }}-Test Complete</h2>
+    <div class="result-card">
+        <p class="result-percentage">{{ percentage }}%</p>
+        <p>You scored {{ score }} out of {{ max_score }} points</p>
+        <p>{{ correct_count }} out of {{ total_questions }} questions correct</p>
+    </div>
+    <a href="{{ url_for('dashboard') }}" class="cta-btn">Back to Dashboard</a>
+</section>
+{% endblock %}

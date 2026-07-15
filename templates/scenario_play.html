@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ scenario.title }} — CyberAware{% endblock %}
+
+{% block content %}
+<section class="quiz-section">
+    <a href="{{ url_for('scenarios_list') }}" class="back-link">← Back to Scenarios</a>
+    <div class="lesson-header">
+        <span class="lesson-icon-big">{{ scenario.icon }}</span>
+        <h2>{{ scenario.title }}</h2>
+    </div>
+
+    <div class="scenario-story">
+        <p>{{ scenario.story }}</p>
+    </div>
+
+    <form method="POST" class="quiz-form">
+        <div class="quiz-card">
+            <p class="quiz-question">What do you do?</p>
+            <div class="quiz-options">
+                <label><input type="radio" name="choice" value="A" required> {{ scenario.option_a }}</label>
+                <label><input type="radio" name="choice" value="B"> {{ scenario.option_b }}</label>
+                <label><input type="radio" name="choice" value="C"> {{ scenario.option_c }}</label>
+                <label><input type="radio" name="choice" value="D"> {{ scenario.option_d }}</label>
+            </div>
+        </div>
+        <button type="submit" class="cta-btn">Make Your Choice</button>
+    </form>
+</section>
+{% endblock %}

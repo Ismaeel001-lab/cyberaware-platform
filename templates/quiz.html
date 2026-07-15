@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ test_type|capitalize }}-Test — CyberAware{% endblock %}
+
+{% block content %}
+<section class="quiz-section">
+    <h2>{{ test_type|capitalize }}-Test</h2>
+    <p class="quiz-subtext">Answer honestly — this measures your current cybersecurity awareness.</p>
+
+    <form method="POST" class="quiz-form">
+        {% for q in questions %}
+        <div class="quiz-card">
+            <p class="quiz-category">{{ q.category }}</p>
+            <p class="quiz-question">{{ loop.index }}. {{ q.question_text }}</p>
+            <div class="quiz-options">
+                <label><input type="radio" name="question_{{ q.id }}" value="A" required> {{ q.option_a }}</label>
+                <label><input type="radio" name="question_{{ q.id }}" value="B"> {{ q.option_b }}</label>
+                <label><input type="radio" name="question_{{ q.id }}" value="C"> {{ q.option_c }}</label>
+                <label><input type="radio" name="question_{{ q.id }}" value="D"> {{ q.option_d }}</label>
+            </div>
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="cta-btn">Submit {{ test_type|capitalize }}-Test</button>
+    </form>
+</section>
+{% endblock %}
